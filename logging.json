@@ -1,0 +1,56 @@
+{
+    "version": 1,
+    "disable_existing_loggers": true,
+    "formatters": {
+        "verbose": {
+            "format": "%(asctime)s - %(module)s - %(filename)s - %(funcName)s - %(lineno)d - %(levelname)s : %(message)s"
+        }
+    },
+    "handlers": {
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+            "stream": "ext://sys.stdout"
+        },
+        "file": {
+            "level": "INFO",
+            "class": "logging.handlers.RotatingFileHandler",
+            "formatter": "verbose",
+            "filename": "./logs/app.log",
+            "maxBytes": 50000000,
+            "backupCount": 1,
+            "encoding": "utf8"
+        }
+    },
+    "loggers": {
+        "main": {
+            "handlers": [
+                "console",
+                "file"
+            ],
+            "propagate": false
+        },
+        "src.mod": {
+            "handlers": [
+                "console",
+                "file"
+            ],
+            "propagate": false
+        },
+        "src.mod2": {
+            "handlers": [
+                "console",
+                "file"
+            ],
+            "propagate": false
+        }
+    },
+    "root": {
+        "level": "DEBUG",
+        "handlers": [
+            "console",
+            "file"
+        ]
+    }
+}
